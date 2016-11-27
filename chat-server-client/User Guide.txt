@@ -1,0 +1,43 @@
+=========================== Server ===========================
+To start chat server run ChatServer program.
+
+Syntax: ./ChatServer -iface IFACE -port PORT
+where:
+    IFACE - interface chat server will listening on for 
+            incomming connections
+
+    PORT  - port number chat server will listening on for 
+            incomming connections
+
+Example: ./ChatServer --iface 127.0.0.1 --port 7777
+
+
+Building (tested with g++ 5.3.1):
+	cd ./server
+	mkdir ./build
+	cd ./build
+	cmake ../
+	make
+
+NB: Boost program_options library is required. 
+    C++11 standard support required.
+
+
+=========================== Client ===========================
+To start chat client set execution flag to chat_client.py
+(chmod +x chat_client.py) and run the program or run
+python chat_client.py.
+
+Syntax: ./chat_client.py --server SERVER --port PORT --nick NICK
+where:
+    SERVER - server ip address to connect to
+
+    PORT   - server port to connect to
+
+    NICK   - user nick name to register under on the server
+
+Example: ./chat_client --server 127.0.0.1 --port 7777 --nick dima
+
+NB: Multiple user connection with the same nick is not supported. 
+If the server receives the second connection from the same user 
+the first one will be closed.
